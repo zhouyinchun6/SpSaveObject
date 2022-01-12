@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+}
+
+android {
+    compileSdk 31
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 31
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.+'
+    implementation 'com.google.code.gson:gson:2.8.8'
+}
+
+
+
+//放开注释，运行后得到jar包
+
+task makeJar(type: Copy) {
+    //删除存在的
+    delete 'build/libs/myjar.jar'
+    //设置拷贝的文件
+    from('build/intermediates/aar_main_jar/debug/')
+    //打进jar包后的文件目录
+    into('build/libs/')
+    //将classes.jar放入build/libs/目录下
+    //include ,exclude参数来设置过滤
+    //（我们只关心classes.jar这个文件）
+    include('classes.jar')
+    //重命名
+    rename ('classes.jar', 'myjar.jar')
+}
+
+makeJar.dependsOn(build)
+
+
+
+
+
+
+
