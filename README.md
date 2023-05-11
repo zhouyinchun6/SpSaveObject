@@ -12,6 +12,19 @@
     方式2：导入工程
     implementation project(path: ':myhaw')
     
+    方式3：
+    项目目录下build.gradle添加
+    allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+    app目录下build.gradle添加
+    dependencies {
+	        implementation 'com.github.zhouyinchun6:SpSaveObject:1.0'
+	}
+    
 使用：
 
      SpAllStore.init(this, SpFileName.USER_FILE, SpFileName.COMMON_FILE); //全局初始化
