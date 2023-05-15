@@ -1,18 +1,15 @@
-轻量级数据存取工具类：
-
-    1、支持存取任何数据类型。
+#  轻量级数据存取工具类：
+    1、支持存取任何数据类型。  
     2、多个SharedPreferences文件管理。
-
-集成：
-
-    方式1：可导入编译好的jar包(导入jar包app要依赖gson)
+##  集成：
+### 方式1：可导入编译好的jar包(导入jar包app要依赖gson)
     implementation 'com.google.code.gson:gson:2.8.8'
     implementation files('libs\\mysp.jar')
     
-    方式2：导入工程
+### 方式2：导入工程
     implementation project(path: ':myhaw')
     
-    方式3：
+###  方式3：
     项目目录下build.gradle添加
     allprojects {
 		repositories {
@@ -24,9 +21,7 @@
     dependencies {
 	        implementation 'com.github.zhouyinchun6:SpSaveObject:1.0'
 	}
-    
-使用：
-
+## 使用：
      SpAllStore.init(this, SpFileName.USER_FILE, SpFileName.COMMON_FILE); //全局初始化
      
      SpCommonStore.hawk.put(SpCommonStore.Key.IS_FIRST, true); //存Boolean
@@ -43,7 +38,9 @@
      
      SpAllStore.clearAllHawk(); //清空所有spFile数据
      
-     具体用法参考demo
+     *具体用法参考demo  
+## 联系方式及反馈
+邮箱：1525590155@qq.com
 
     
         
